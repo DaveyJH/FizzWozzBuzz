@@ -1,7 +1,9 @@
 """
 A doctsring explaining what the file does
 """
+import fizzbuzz
 
+print("end of fizzbuzz!")
 
 def example():
     """
@@ -29,3 +31,11 @@ print(range(6), "is a", type(range(6)))
 print({"name" : "John", "age" : 80}, "is a", type({"name" : "John", "age" : 80}))
 print({"egg", "bacon", "spam"}, "is a", type({"egg", "bacon", "spam"}))
 print(True, "is a", type(True))
+
+print("when".center(26))
+print("using the center".center(26))
+print("method".center(26))
+print("the result".center(26))
+print("is".center(26))
+print("this".center(26))
+print(str("thisthatother".rpartition("that")))
