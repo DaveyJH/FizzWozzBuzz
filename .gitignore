@@ -2,3 +2,4 @@
 .vscode/
 env.py
 *.code-workspace
+__pycache__/
