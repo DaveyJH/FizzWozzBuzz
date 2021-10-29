@@ -9,3 +9,4 @@ core.python*
 *.vscode
 *.sqlite3
 *.pyc
+*.flake8
