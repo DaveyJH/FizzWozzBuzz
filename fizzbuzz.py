@@ -162,7 +162,8 @@ def play(play_num, diff):
     def check_number(play_num):
         minus = False
         player_guess = input("Please input your guess:")
-        if player_guess.isalpha():
+        if "".join(player_guess.split()).isalpha():
+            player_guess = "".join(player_guess.split())
             player_guess = player_guess.lower()
         if "-" in player_guess:
             if player_guess.find("-") == 0:
