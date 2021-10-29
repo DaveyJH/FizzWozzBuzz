@@ -1,5 +1,6 @@
 """Play FizzBuzzWozz"""
 
+
 def game_params():
     """
     User input for last and first numbers to play.
@@ -52,7 +53,8 @@ def game_params():
                 or play_to < int(game_start_input):
             if "-" in game_start_input:
                 if game_start_input.find("-") == 0:
-                    game_start_input = game_start_input[1:len(game_start_input)]
+                    gsi = game_start_input
+                    game_start_input = gsi[1:len(game_start_input)]
                 if game_start_input.isdigit():
                     num = int(game_start_input)
                     num = num * -1
@@ -70,6 +72,7 @@ def game_params():
     end = game_end()
     return (end, game_start(end))
 
+
 def play_easy(play_num):
     """
     checks if number if divisible by 5
@@ -82,6 +85,7 @@ def play_easy(play_num):
     else:
         result = play_num
     return result
+
 
 def play_med(play_num):
     """
@@ -101,6 +105,7 @@ def play_med(play_num):
     else:
         result = play_num
     return result
+
 
 def play_hard(play_num):
     """
@@ -130,14 +135,13 @@ def play_hard(play_num):
         result = play_num
     return result
 
-def play(play_num, diff):
 
+def play(play_num, diff):
     """
     run the game
     """
 
     def compute_number(play_num):
-
         """
         checks if the number is divisible by 3, 5 and 4 or all, depending on\n
         difficulty settings and responds accordingly
@@ -156,15 +160,26 @@ def play(play_num, diff):
         elif diff == "hard":
             result = play_hard(play_num)
         else:
-            raise SystemExit("Something went wrong with the difficulty settings!")
+            raise SystemExit(
+                "Something went wrong with the difficulty settings!")
         return result
 
     def check_number(play_num):
         minus = False
         player_guess = input("Please input your guess:")
         if "".join(player_guess.split()).isalpha():
-            player_guess = "".join(player_guess.split())
             player_guess = player_guess.lower()
+            valid_words = [
+                "fizz",
+                "buzz",
+                "wozz",
+                "fizzbuzz",
+                "fizzwozz",
+                "wozzbuzz"
+            ]
+            guess_list = player_guess.split()
+            if all(word in valid_words for word in guess_list):
+                player_guess = "".join(player_guess.split())
         if "-" in player_guess:
             if player_guess.find("-") == 0:
                 player_guess = player_guess[1:len(player_guess)]
@@ -174,7 +189,7 @@ def play(play_num, diff):
             if minus:
                 player_guess = player_guess * -1
         if diff == "easy":
-            #buzz
+            # buzz
             if play_num % 5 == 0:
                 if player_guess == "buzz":
                     pass
@@ -183,7 +198,7 @@ def play(play_num, diff):
                     print("That should have been 'buzz'.")
                     print("Better luck next time!! Now BUZZ off!!")
                     exit()
-            #number
+            # number
             else:
                 if player_guess == play_num:
                     pass
@@ -192,7 +207,7 @@ def play(play_num, diff):
                     print("You lose, your number is up!!")
                     exit()
         if diff == "medium":
-            #number
+            # number
             if play_num % 5 != 0 and play_num % 3 != 0:
                 if player_guess == play_num:
                     pass
@@ -200,7 +215,7 @@ def play(play_num, diff):
                     print(f"Sorry, that should have been {play_num}!")
                     print("You lose, your number is up!!")
                     exit()
-            #fizzbuzz
+            # fizzbuzz
             if play_num % 5 == 0 and play_num % 3 == 0:
                 if player_guess == "fizzbuzz":
                     pass
@@ -211,7 +226,7 @@ def play(play_num, diff):
                     print("You really FIZZled out!!")
                     print("Now BUZZ off!!")
                     exit()
-            #buzz
+            # buzz
             if play_num % 5 == 0 and play_num % 3 != 0:
                 if player_guess == "buzz":
                     pass
@@ -220,7 +235,7 @@ def play(play_num, diff):
                     print("That should have been 'buzz'.")
                     print("Better luck next time!! Now BUZZ off!!")
                     exit()
-            #fizz
+            # fizz
             if play_num % 5 != 0 and play_num % 3 == 0:
                 if player_guess == "fizz":
                     pass
@@ -230,20 +245,20 @@ def play(play_num, diff):
                     print("Better luck next time!! You really FIZZled out!!")
                     exit()
         if diff == "hard":
-            #number
+            # number
             if (play_num % 5 != 0
-            and play_num % 3 != 0
-            and play_num % 4 != 0):
+                and play_num % 3 != 0
+                    and play_num % 4 != 0):
                 if player_guess == play_num:
                     pass
                 else:
                     print(f"Sorry, that should have been {play_num}!")
                     print("You lose, your number is up!!")
                     exit()
-            #fizzbuzzwozz
+            # fizzbuzzwozz
             if (play_num % 5 == 0
-            and play_num % 3 == 0
-            and play_num % 4 == 0):
+                and play_num % 3 == 0
+                    and play_num % 4 == 0):
                 if player_guess == "fizzwozzbuzz":
                     pass
                 else:
@@ -254,10 +269,10 @@ def play(play_num, diff):
                     print("That WOZZ fun!!")
                     print("Now BUZZ off!!")
                     exit()
-            #fizzbuzz
+            # fizzbuzz
             if (play_num % 5 == 0
-            and play_num % 3 == 0
-            and play_num % 4 != 0):
+                and play_num % 3 == 0
+                    and play_num % 4 != 0):
                 if player_guess == "fizzbuzz":
                     pass
                 else:
@@ -267,10 +282,10 @@ def play(play_num, diff):
                     print("You really FIZZled out!!")
                     print("Now BUZZ off!!")
                     exit()
-            #wozzbuzz
+            # wozzbuzz
             if (play_num % 5 == 0
-            and play_num % 3 != 0
-            and play_num % 4 == 0):
+                and play_num % 3 != 0
+                    and play_num % 4 == 0):
                 if player_guess == "wozzbuzz":
                     pass
                 else:
@@ -280,10 +295,10 @@ def play(play_num, diff):
                     print("That WOZZ fun!!")
                     print("Now BUZZ off!!")
                     exit()
-            #fizzwozz
+            # fizzwozz
             if (play_num % 5 != 0
-            and play_num % 3 == 0
-            and play_num % 4 == 0):
+                and play_num % 3 == 0
+                    and play_num % 4 == 0):
                 if player_guess == "fizzwozz":
                     pass
                 else:
@@ -293,10 +308,10 @@ def play(play_num, diff):
                     print("You really FIZZled out!!")
                     print("That WOZZ fun!!")
                     exit()
-            #buzz
+            # buzz
             if (play_num % 5 == 0
-            and play_num % 3 != 0
-            and play_num % 4 != 0):
+                and play_num % 3 != 0
+                    and play_num % 4 != 0):
                 if player_guess == "buzz":
                     pass
                 else:
@@ -304,10 +319,10 @@ def play(play_num, diff):
                     print("That should have been 'buzz'.")
                     print("Better luck next time!! Now BUZZ off!!")
                     exit()
-            #fizz
+            # fizz
             if (play_num % 5 != 0
-            and play_num % 3 == 0
-            and play_num % 4 != 0):
+                and play_num % 3 == 0
+                    and play_num % 4 != 0):
                 if player_guess == "fizz":
                     pass
                 else:
@@ -315,10 +330,10 @@ def play(play_num, diff):
                     print("That should have been 'fizz'.")
                     print("Better luck next time!! You really FIZZled out!!")
                     exit()
-            #wozz
+            # wozz
             if (play_num % 5 != 0
-            and play_num % 3 != 0
-            and play_num % 4 == 0):
+                and play_num % 3 != 0
+                    and play_num % 4 == 0):
                 if player_guess == "wozz":
                     pass
                 else:
@@ -341,11 +356,12 @@ def play(play_num, diff):
         return
     play(play_num, diff)
 
+
 def check_diff():
     "check the difficulty"
 
     numbers = "Numbers divisible by "
-    replace =  " should be replaced by "
+    replace = " should be replaced by "
     three = f"{numbers}3{replace}'fizz'"
     five = f"{numbers}5{replace}'buzz'"
     four = f"{numbers}4{replace}'wozz'"
@@ -420,6 +436,7 @@ def check_diff():
     else:
         print("Computer starts!")
     return difficulty
+
 
 print("Hey there! Let's play FizzBuzz")
 DIFF_STRING = "What difficulty would you like to play: easy, medium or hard:"
