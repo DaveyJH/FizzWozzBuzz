@@ -93,7 +93,7 @@ def play_med(play_num):
     returns:
         buzz : {str} -- if divisible by 5
         fizz : {str} -- if divisible by 3
-        concat : {str} -- if divisble by multiple
+        concat : {str} -- if divisible by multiple
         play_num : {int} -- if not divisible by 3 or 5
     """
     if play_num % 5 == 0 and play_num % 3 == 0:
@@ -114,7 +114,7 @@ def play_hard(play_num):
         buzz : {str} -- if divisible by 5
         fizz : {str} -- if divisible by 3
         wozz : {str} -- if divisible by 4
-        concat : {str} -- if divisble by multiple
+        concat : {str} -- if divisible by multiple
         play_num : {int} -- if not divisible by 3 or 5
     """
     if play_num % 5 == 0 and play_num % 3 == 0 and play_num % 4 == 0:
@@ -255,7 +255,7 @@ def play(play_num, diff):
                     print(f"Sorry, that should have been {play_num}!")
                     print("You lose, your number is up!!")
                     exit()
-            # fizzbuzzwozz
+            # fizzwozzbuzz
             if (play_num % 5 == 0
                 and play_num % 3 == 0
                     and play_num % 4 == 0):
