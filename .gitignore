@@ -10,3 +10,4 @@ core.python*
 *.sqlite3
 *.pyc
 *.flake8
+wip/
