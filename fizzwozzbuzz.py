@@ -168,12 +168,19 @@ def check_diff():
         "easy, medium or hard:"
 
     difficulty = input(DIFF_STRING).lower()
+        
     while not difficulty.isalpha():
         print("Please input 'easy', 'medium' or 'hard'")
         difficulty = input(DIFF_STRING).lower()
         continue
 
     while difficulty not in ("easy", "medium", "hard"):
+        
+        while not difficulty:
+            print("No input detected. Please input 'easy', 'medium' or 'hard'")
+            difficulty = input(DIFF_STRING).lower()
+            continue
+        
         while difficulty[0] == "e":
             mean_easy = input("Did you mean 'easy'? y/n:")
             if mean_easy == "n":
